@@ -12,7 +12,7 @@ const startServer = (port: number) =>
     });
 
     server.on("error", (error) => {
-      debug(chalk.red("Error connecting to database: ", error.message));
+      debug(chalk.red("Error with the server: ", error.message));
       reject(error);
     });
   });

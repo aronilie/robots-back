@@ -4,8 +4,8 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "test": "jest",
-    "jest:dev": "jest --watchAll",
+    "test": "jest src",
+    "test:dev": "jest src  --watchAll",
     "ts": "tsc",
     "ts:dev": "tsc -w",
     "start": "node .",
