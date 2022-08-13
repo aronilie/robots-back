@@ -7,6 +7,7 @@ const debug = Debug("Robots-Controller");
 
 const getRobots = async (req: Request, res: Response) => {
   res.status(200).json({ robots });
+
   debug(chalk.bgBlue.white("Request has arrived!"));
 };
 

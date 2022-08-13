@@ -3,14 +3,14 @@ import Debug from "debug";
 import express from "express";
 import mongoose from "mongoose";
 
-const app = express();
+export const app = express();
 
 const debug = Debug("startServer");
 
 export const startServer = (port: number) =>
   new Promise((resolve, reject) => {
     const server = app.listen(port, () => {
-      debug(chalk.blue(`Server up and listening on http://localhost:${port}`));
+      debug(chalk.bgBlue.white(`Listening`));
       resolve(true);
     });
 

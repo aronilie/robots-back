@@ -1,6 +1,12 @@
-import { Schema, Model } from "mongoose";
+import mongoose from "mongoose";
+
+const { Schema } = mongoose;
 
 const robotsSchema = new Schema({
+  name: {
+    type: String,
+    require: true,
+  },
   imageUrl: {
     type: String,
     require: true,
@@ -19,6 +25,6 @@ const robotsSchema = new Schema({
   },
 });
 
-const Robot = new Model("Robot", robotsSchema);
+const Robot = mongoose.model("Robot", robotsSchema, "robots");
 
 export default Robot;

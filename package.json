@@ -10,7 +10,7 @@
     "ts:dev": "tsc -w",
     "start": "node .",
     "start:dev": "nodemon -q",
-    "built": "npm run ts",
+    "build": "npm run ts",
     "prepare": "husky install"
   },
   "keywords": [],
