@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { model } from "mongoose";
 
 const { Schema } = mongoose;
 
@@ -25,6 +25,6 @@ const robotsSchema = new Schema({
   },
 });
 
-const Robot = mongoose.model("Robot", robotsSchema, "robots");
+const Robot = model("Robot", robotsSchema, "robots");
 
 export default Robot;
