@@ -16,5 +16,27 @@ describe("Given a robotsControllers controller", () => {
       const status = 200;
       expect(res.status).toBeCalledWith(status);
     });
+
+    test("And it should return a list of robots", async () => {
+      const req = {} as Partial<Request>;
+      const res = {
+        status: jest.fn().mockReturnThis(),
+        json: jest.fn(),
+      } as Partial<Response>;
+      const mockRobots = [
+        {
+          name: "",
+          imageUrl: "",
+          velocity: 0,
+          resistance: 0,
+          creationDate: "",
+        },
+      ];
+
+      Robot.find = jest.fn().mockResolvedValue(mockRobots);
+      await getRobots(req as Request, res as Response);
+
+      expect(res.json).toHaveBeenCalledWith(mockRobots);
+    });
   });
 });

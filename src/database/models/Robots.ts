@@ -20,7 +20,7 @@ const robotsSchema = new Schema({
     require: true,
   },
   creationDate: {
-    type: Number,
+    type: String,
     require: true,
   },
 });
