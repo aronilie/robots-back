@@ -1,15 +1,21 @@
-import express from "express";
-import Debug from "debug";
-import chalk from "chalk";
-import robotsRouter from "./routes/RobotsRoutes";
+import morgan from "morgan";
+import "./loadEnvironment";
+import { connectDB, startServer, app } from "./server/startServer";
+import robotsRouter from "./server/routers/RobotsRoutes";
 
-const app = express();
-const debug = Debug("Robots-Index");
 const port = process.env.PORT ?? 3500;
-app.use(express.json());
+
+const mongoUrl = process.env.MONGODB as string;
+
+app.use(morgan("dev"));
 
 app.use("/robots", robotsRouter);
 
-app.listen(port, () => {
-  debug(chalk.bgGreen.white("Server listening"));
-});
+(async () => {
+  try {
+    await connectDB(mongoUrl);
+    await startServer(+port);
+  } catch (error) {
+    process.exit(1);
+  }
+})();
