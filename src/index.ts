@@ -4,7 +4,7 @@ import { connectDB, startServer } from "./server/startServer";
 
 const app = express();
 const port = process.env.PORT ?? 3500;
-const mongoUrl = "Atlas string";
+const mongoUrl = process.env.MONGODB;
 app.use(express.json());
 
 (async () => {

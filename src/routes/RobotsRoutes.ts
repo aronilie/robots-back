@@ -1,8 +1,8 @@
 import express from "express";
-import { startServer } from "../server/startServer";
+import getData from "../controllers/RobotsControllers";
 
 const robotsRouter = express.Router();
 
-robotsRouter.get("/", startServer);
+robotsRouter.get("/", getData);
 
 export default robotsRouter;
