@@ -9,15 +9,8 @@ const port = process.env.PORT ?? 3500;
 
 const mongoUrl = process.env.MONGODB;
 
+app.use(cors());
 app.use(morgan("dev"));
-
-app.use(
-  cors({
-    origin: "http://localhost:3000/",
-    methods: "GET",
-  })
-);
-
 app.use("/robots", robotsRouter);
 app.use(notFoundError);
 
