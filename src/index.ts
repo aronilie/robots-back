@@ -6,7 +6,7 @@ import notFoundError from "./server/middlewares/errors";
 
 const port = process.env.PORT ?? 3500;
 
-const mongoUrl = process.env.MONGODB as string;
+const mongoUrl = process.env.MONGODB;
 
 app.use(morgan("dev"));
 
