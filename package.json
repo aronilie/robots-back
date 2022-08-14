@@ -12,7 +12,7 @@
     "start:dev": "nodemon -q",
     "build": "npm run ts",
     "prepare": "husky install",
-    "test-coverage": "jest src --coverage --watchAll=false"
+    "jest-coverage": "jest src --coverage --watchAll=false"
   },
   "keywords": [],
   "author": "",
