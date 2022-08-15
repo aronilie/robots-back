@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { getRobots } from "./robotsControllers";
+import { createRobot, getRobots } from "./robotsControllers";
 import Robot from "../../database/models/Robots";
 
 describe("Given a robotsControllers controller", () => {
@@ -37,6 +37,46 @@ describe("Given a robotsControllers controller", () => {
       await getRobots(req as Request, res as Response);
 
       expect(res.json).toHaveBeenCalledWith(mockRobots);
+    });
+  });
+});
+
+describe("Given a controller createRobot", () => {
+  describe("When it´s called", () => {
+    test("Then it should call the method status from res with 201", async () => {
+      const req = {} as Partial<Request>;
+      const res = {
+        status: jest.fn().mockReturnThis(),
+        json: jest.fn(),
+      } as Partial<Response>;
+
+      Robot.create = jest.fn();
+      await createRobot(req as Request, res as Response);
+      const status = 201;
+      expect(res.status).toBeCalledWith(status);
+    });
+
+    test("And it should return a robot.", async () => {
+      const mockRobot = {
+        name: "",
+        imageUrl: "",
+        velocity: 0,
+        resistance: 0,
+        creationDate: "",
+      };
+
+      const req = {
+        body: mockRobot,
+      } as Partial<Request>;
+      const res = {
+        status: jest.fn().mockReturnThis(),
+        json: jest.fn(),
+      } as Partial<Response>;
+
+      Robot.create = jest.fn().mockResolvedValue(mockRobot);
+      await createRobot(req as Request, res as Response);
+
+      expect(res.json).toHaveBeenCalledWith(mockRobot);
     });
   });
 });
