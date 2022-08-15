@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import getRobots from "./robotsControllers";
+import { getRobots } from "./robotsControllers";
 import Robot from "../../database/models/Robots";
 
 describe("Given a robotsControllers controller", () => {

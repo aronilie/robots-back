@@ -5,7 +5,7 @@ import Robot from "../../database/models/Robots";
 
 const debug = Debug("Robots-Controller");
 
-const getRobots = async (req: Request, res: Response) => {
+export const getRobots = async (req: Request, res: Response) => {
   const robots = await Robot.find({});
 
   await res.status(200).json(robots);
@@ -13,4 +13,8 @@ const getRobots = async (req: Request, res: Response) => {
   await debug(chalk.bgGreen.white("Request successful!"));
 };
 
-export default getRobots;
+export const createRobot = async (req: Request, res: Response) => {
+  const robot = req.body;
+  await Robot.create(robot);
+  res.status(201).json(robot);
+};
