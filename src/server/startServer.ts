@@ -9,7 +9,7 @@ const debug = Debug("startServer");
 export const startServer = (port: number) =>
   new Promise((resolve, reject) => {
     const server = app.listen(port, () => {
-      debug(chalk.bgBlue.white(`Listening`));
+      debug(chalk.bgBlue.white(`Listening on port 3500`));
       resolve(true);
     });
 
