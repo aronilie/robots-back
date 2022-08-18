@@ -1,7 +1,7 @@
 import chalk from "chalk";
 import Debug from "debug";
 import { Request, Response } from "express";
-import Robot from "../../database/models/Robots";
+import Robot from "../../database/models/Robot";
 
 const debug = Debug("Robots-Controller");
 

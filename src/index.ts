@@ -2,7 +2,8 @@ import "./loadEnvironment";
 import cors from "cors";
 import morgan from "morgan";
 import express from "express";
-import { connectDB, startServer, app } from "./server/startServer";
+import { startServer, app } from "./server/startServer";
+import connectDB from "./database/index";
 import robotsRouter from "./server/routers/robotsRoutes";
 import notFoundError from "./server/middlewares/errors";
 
