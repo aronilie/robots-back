@@ -1,6 +1,7 @@
 import chalk from "chalk";
 import Debug from "debug";
 import express from "express";
+import CustomError from "../utils/CustomError";
 
 export const app = express();
 
@@ -13,8 +14,11 @@ export const startServer = (port: number) =>
       resolve(true);
     });
 
-    server.on("error", (error) => {
-      debug(chalk.red("Error with the server: ", error.message));
+    server.on("error", (error: CustomError) => {
+      debug(chalk.bgRed.white("Error with the server: ", error.message));
+      if (error.code === "EADDRINUSE") {
+        debug(chalk.bgRed.white(`Port ${port} in use`));
+      }
       reject(error);
     });
   });
