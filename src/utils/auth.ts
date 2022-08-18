@@ -2,12 +2,12 @@ import "../loadEnvironment";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
-export interface JwtPayload {
+export interface UserJwtPayload {
   id: string;
   userName: string;
 }
 
-export const createToken = (payload: JwtPayload) =>
+export const createToken = (payload: UserJwtPayload) =>
   jwt.sign(payload, process.env.SECRET);
 
 export const hashCreator = (text: string) => {
@@ -15,3 +15,6 @@ export const hashCreator = (text: string) => {
 
   return bcrypt.hash(text, salt);
 };
+
+export const hashCompare = (text: string, hash: string) =>
+  bcrypt.compare(text, hash);
