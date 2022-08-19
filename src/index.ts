@@ -5,7 +5,7 @@ import express from "express";
 import { startServer, app } from "./server/startServer";
 import connectDB from "./database/index";
 import robotsRouter from "./server/routers/robotsRouter";
-import notFoundError from "./server/middlewares/errors";
+import { generalError, notFoundError } from "./server/middlewares/errors";
 import usersRouter from "./server/routers/usersRouters";
 
 const port = process.env.PORT ?? 3500;
@@ -20,6 +20,7 @@ app.use("/robots", robotsRouter);
 app.use("/users", usersRouter);
 
 app.use(notFoundError);
+app.use(generalError);
 
 (async () => {
   try {

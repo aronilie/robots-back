@@ -1,30 +1,24 @@
-import mongoose, { model } from "mongoose";
+import { model, Schema } from "mongoose";
 
-const { Schema } = mongoose;
-
-const robotsSchema = new Schema({
+const robotSchema = new Schema({
   name: {
     type: String,
-    require: true,
+    required: true,
   },
-  imageUrl: {
+  image: {
     type: String,
-    require: true,
-  },
-  velocity: {
-    type: Number,
-    require: true,
-  },
-  resistance: {
-    type: Number,
-    require: true,
+    required: true,
   },
   creationDate: {
     type: Date,
-    require: true,
+    default: new Date(),
+  },
+  owner: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
   },
 });
 
-const Robot = model("Robot", robotsSchema, "robots");
+const Robot = model("Robot", robotSchema, "robot");
 
 export default Robot;
