@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import notFoundError from "./errors";
+import { notFoundError } from "./errors";
 
 describe("Given an notFoundError function.", () => {
   describe("When it`s called wit a response.", () => {
