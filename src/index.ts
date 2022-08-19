@@ -10,7 +10,7 @@ import usersRouter from "./server/routers/usersRouters";
 
 const port = process.env.PORT ?? 3500;
 
-const mongoUrl = process.env.MONGODB;
+const mongoUrl = process.env.MONGODB_URL;
 
 app.use(cors());
 app.use(morgan("dev"));
